@@ -1,0 +1,19 @@
+---
+import { getMenuByName } from '../lib/api.js';
+
+const { menuItems } = await getMenuByName();
+
+---
+<nav class="flex flex-wrap items-center justify-between p-6 bg-blue-500 shadow-lg">
+    <a href="/" class="cursor-pointer p-4 ml-2 text-white">AstroPress</a>
+
+    <ul class="flex items-center justify-end flex-grow">
+      {menuItems.nodes.map( (item) => 
+          <li>
+              <a href={item.url} class={`cursor-pointer p-4 ml-2 text-white`}>
+                  {item.label}
+              </a>
+          </li>
+      )}
+    </ul>
+</nav>
